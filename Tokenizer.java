@@ -53,12 +53,14 @@ public class Tokenizer {
 			      String token = st.nextToken().toLowerCase();
 			      Matcher m = p.matcher (token);
 			      if(m.find() == true){
-			    	 while(m.find ()){}
+			    	 while(m.find ()){
+			    		 token=m.replaceAll("");
+			    	 }
 			    	  token=m.replaceAll("");
 			      }
 			      
 			      if(!token.isEmpty()){
-			    	  System.out.println("text 1 = " + token);
+			    	  //System.out.println("text 1 = " + token);
 			    	  words.put(token,token);
 			      }
 		  	  }
