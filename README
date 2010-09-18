@@ -1,0 +1,36 @@
+CECS 429/529 Programming Assignment 1, Fall 2010, Dr. Ebert
+
+
+Write a program that reads in a text file and treats each paragraph as a document (each paragraph
+is separated by at least one line consisting of only whitespace). Tokenize the file by defining a
+token as a sequence of characters that is delimited by whitespace. Remove all beginning and ending
+punctuation from the token. This includes exclamation marks, single and double quotes, periods,
+semicolons, colons, commas, question marks. Other symbols, including hyphens and apostrophes,
+may be kept.
+
+The program interface should allow the user to type in a conjunctive query. It then returns to the
+user the number of query matches, the text of the first document matched, and a menu that allows
+the user to view other documents (or submit a new query). The query interface should support the
+search for exact phrases (within double quotes).
+
+The program must be efficient. It thus must use an inverted index for the purpose of query retrieval,
+as well as a positional index for exact-phrase lookup. These indices may be combined into one, so
+long as this does not affect the performance of a non-phrase query. A hash table should be used
+to store tokens during the lexical analysis phase. Finally, assume that all documents fit into local
+memory, and so each document should be placed in a document structure (that at least consists of
+the docid and document text).
+
+You may pair up with another student to work on this project. If you decide to do so, you must
+implement the additional functionality of handling OR and not queries (using a minus sign before
+the term that is to not appear. You may assume the queries are in disjunctive normal form without
+parentheses. 
+
+For example
+orange mandarin -tangerine OR banana OR plum pluot
+
+Requests all documents that either contains orange and mandarin (but not tangerine), or contains
+banana, or contains plum and pluot. Both students are responsible for understanding all the code,
+not just the code he or she wrote.
+
+With the exception of data-structure libraries (for hash tables, lists, arrays, etc.), the program must
+be written from scratch.

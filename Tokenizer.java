@@ -24,17 +24,18 @@ public class Tokenizer {
 	
 	static Pattern p;
 	static Hashtable words = new Hashtable();
-	static Hashtable sortedwords = new Hashtable();
-	
-	 public static void main(String[] args) throws FileNotFoundException {
+	static String filename = "E:\\Eclipse-Workspace\\Workspace1\\IR1\\src\\IR1\\sample.txt";
+		
+	 @SuppressWarnings("unchecked")
+	public static void main(String[] args) throws FileNotFoundException {
 
-	    FileReader file = new FileReader("E:\\Eclipse-Workspace\\Workspace1\\IR1\\src\\IR1\\sample.txt");
+	    FileReader file = new FileReader(filename);
 	    BufferedReader br = new BufferedReader(file);
 	    String storeWordList = "";
 	    try {
- 
+	    	
 	      while ((storeWordList = br.readLine()) != null) {
-	    	    
+	    	  
 	    	  StringTokenizer st = new StringTokenizer(storeWordList);
 	    	  while (st.hasMoreTokens()){
 	    		  //System.out.println(st.nextToken());
@@ -65,11 +66,16 @@ public class Tokenizer {
 			      }
 		  	  }
 	      }
-	      System.out.println("Contents of hash table:" + words.values());
-	      	      
-	      // dispose all the resources after using them.
+	   // dispose all the resources after using them.
 	      br.close();
-
+	      file.close();
+	      
+	      System.out.println("Contents of hash table:" + words.values());
+	      //Instantiating the class Indexer
+	      Indexer indexer = new Indexer(filename);
+	      
+	      indexer.createIndextable(words);
+	      
 	    } catch (FileNotFoundException e) {
 	      e.printStackTrace();
 	    } catch (IOException e) {
